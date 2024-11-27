@@ -7,12 +7,8 @@
 #include "fork.h"
 
 int main(){
-  int number;
-  for(int i = 0; i < 10; i++){
-    srand(time(NULL));
-    number = rand() % 5 + 1;
-    printf("%d\n", number);
-}
+  forkChild();
+  return 0;
 }
 
   /*

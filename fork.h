@@ -1,7 +1,7 @@
 #ifndef FORK_H
 #define FORK_H
 
-void fork();
-void child(int chPid);
+void forkChild();
+void child(int childPID);
 
 #endif

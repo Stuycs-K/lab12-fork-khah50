@@ -6,16 +6,17 @@
 #include <string.h>
 #include "fork.h"
 
-
 void child(int childPID){
   srand(time(NULL));
   int number = rand() % 5 + 1;
-  printf("%d %dsec\n", childPID, );
+  printf("%d %dsec\n", childPID, number);
+
   sleep(number);
-  printf("%d finished after %dsec\n", childPID, number)
+
+  printf("%d finished after %dsec\n", childPID, number);
 }
 
-void fork(){
+void forkChild(){
   srand(time(NULL));
   pid_t parentPID = getpid();
   printf("%d about to create 2 child processes", parentPID);
@@ -26,4 +27,14 @@ void fork(){
     exit(0);
   }
 
+  pid_t childTwo = fork();
+  if(childTwo == 0){
+    child(getpid());
+    exit(0);
+  }
+
+  pid_t exit = wait(NULL);
+  printf("Main Process %d is done. Child %d slept for sec\n", parentPID, exit);
+ 
+  wait(NULL);
 }
